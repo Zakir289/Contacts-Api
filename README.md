@@ -22,7 +22,7 @@ For **Create, Update** we need send the values of **Id, Name, Email, DOB**. You 
 * other than **Mongoose** we can use **MongoClient** according to the requirement.
 
 
-## Some Summary on MongoClient Interface Also  which I did not used in the above program
+## Some Summary on MongoClient Interface(which I did not used in the above program)
 
 
 ```javascript
