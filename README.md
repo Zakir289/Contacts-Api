@@ -22,10 +22,56 @@ For **Create, Update** we need send the values of **Id, Name, Email, DOB**. You 
 * other than **Mongoose** we can use **MongoClient** according to the requirement.
 
 
-## Some SUmmary on MongoClient Interface 
+## Some Summary on MongoClient Interface Also  which I did not used in the above program
 
 
 ```javascript
- //lets require/import the mongodb native drivers.
+ //Import the mongodb native drivers
   var mongodb = require('mongodb')
+  
+   // Connection URL. This is where your mongodb server is running.
+  var url = 'mongodb://localhost:27017/contact_database';
+  
+  
+
+MongoClient.connect(url, function (err, db) {
+    if (err) {
+    } else {
+ collection = db.collection('customer');  //customer is Collection here(like table in RDB)
+    }
+});
+
+//Inserting a document will be done using "collection.insert()
+
+    var contact = {             //prepare the contact first 
+            _id: req.body.id,
+            name: req.body.name,
+            email: req.body.email,
+            b_date: req.body.b_date
+        };
+
+        collection.insert([contact],function (err) { //sytax to insert the code
+            if (!err) {
+                res.send(contact)
+            } else {
+                res.send('"May be duplication of contact, please find the error"   ' + err)
+                //res.status(404) -- add status if needed
+            }
+        });
+
+  
+  //can insert Multiple contacts using the syntax 
+  
+    collection.insert([contact1, contact2, contact3], function (err, result) {
+    })
+    
+    //To update use collection.update()
+    //To fecth use collection.find()
+    
+    
+    As far I see, Mongoose is more comfortable when compared to Mongo client
+    
+    
+    
+    
   ```
